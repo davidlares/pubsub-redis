@@ -25,3 +25,14 @@
 <br>
 
 <%= link_to 'New Product', new_product_path %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    var connection = new WebSocket("ws://localhost:8000/subscribe")
+    connection.onopen = function(response){
+      connection.onmessage = function(response){
+        alert('Something arrived')
+      }
+    }
+  })
+</script>
