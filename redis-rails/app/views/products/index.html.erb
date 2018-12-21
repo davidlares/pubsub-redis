@@ -31,7 +31,18 @@
     var connection = new WebSocket("ws://localhost:8000/subscribe")
     connection.onopen = function(response){
       connection.onmessage = function(response){
-        alert('Something arrived')
+        // alert('Something arrived')
+        data = JSON.parse(response.data)
+        console.log(data)
+        row = `<tr>
+          <td>${data.name}</td>
+          <td><a href="/products/${data.id}">Show</a></td>
+          <td><a href="/products/${data.id}/edit">Edit</a></td>
+          <td><a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/products/${data.id}">Destroy</a></td>
+        </tr>`;
+
+        $('table > tbody:last').append(row);
+
       }
     }
   })
