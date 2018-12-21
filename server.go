@@ -3,7 +3,13 @@ package main
 import (
   "fmt"
   "gopkg.in/redis.v3"
+  "encoding/json"
 )
+
+type Request struct {
+  Id int
+  Name string
+}
 
 func ConnectNewClient(){
   // redis client
@@ -24,8 +30,15 @@ func ConnectNewClient(){
     if err != nil {
       fmt.Println("Unable to read message")
     }
-    fmt.Println(message.Channel)
-    fmt.Println(message.Payload)
+    
+    request := Request{}
+    if err := json.Unmarshal([]byte(message.Payload), &request); err != nil {
+      fmt.Println("Unable to read JSON")
+    }
+    fmt.Println(request.Id)
+    fmt.Println(request.Name)
+    // fmt.Println(message.Channel)
+    // fmt.Println(message.Payload)
   }
 
   fmt.Println("Connection stablished")
