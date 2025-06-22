@@ -27,8 +27,7 @@ Entidades: Publicar, Suscriptor y un ente que se encarga de enviar el mensaje
 - Go (Gorilla Mux, Gorilla Websocket, Redis v3), GoRoutines y Channels
 
 ## Créditos
-- [David E Lares S](https://twitter.com/@davidlares3)
+[David E Lares S](https://davidlares.com)
 
 ## Licencia
-
-- [MIT](https://opensource.org/licenses/MIT)  
+[MIT](https://opensource.org/licenses/MIT)
